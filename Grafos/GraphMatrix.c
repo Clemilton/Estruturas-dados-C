@@ -1,20 +1,6 @@
-#define vertex int
+#include "GraphMatrix.h"
 
-
-#include <stdio.h>
-#include <stdlib.h>
-
-
-typedef enum { false, true } bool;
-struct graphMatrix {
-	int v;
-	int a;
-	int **adj;
-};
-
-typedef struct graphMatrix *GraphMatrix;
-
-static int **MATRIXint( int r, int c, int val) { 
+int **MATRIXint( int r, int c, int val) { 
    int **m = malloc( r * sizeof (int *));
    for (vertex i = 0; i < r; ++i) 
       m[i] = malloc( c * sizeof (int));
@@ -23,6 +9,7 @@ static int **MATRIXint( int r, int c, int val) {
          m[i][j] = val;
    return m;
 }
+
 GraphMatrix GRAPHinit(int v){
 	GraphMatrix G = malloc(sizeof*G);
 	
@@ -206,20 +193,5 @@ bool GRAPHequal(GraphMatrix g1,GraphMatrix g2){
 				return false;
 	
 	return true;
-}
-int main (){
-	
-	int vertices;
-	printf("Digite o numero de vertices: ");
-	scanf("%d",&vertices);
-	
-	GraphMatrix grafo = GRAPHinit(vertices);
-	
-	leArestas(grafo,7);
-	GraphMatrix copia = GRAPHcopy(grafo);
-	
-	printf("%d",GRAPHequal(grafo,copia));
-	
-	return 0;
 }
 
