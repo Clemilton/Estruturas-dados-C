@@ -92,7 +92,6 @@ int*  graphList_isSource(GraphList g){
 }
 
 void graphList_imprimeFontes(GraphList g){
-	
 	int * v = graphList_isSource(g);
 	
 	printf("\nVertices fontes: ");
