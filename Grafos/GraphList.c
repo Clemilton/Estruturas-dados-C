@@ -93,11 +93,34 @@ int*  graphList_isSource(GraphList g){
 
 void graphList_imprimeFontes(GraphList g){
 	int * v = graphList_isSource(g);
-	
 	printf("\nVertices fontes: ");
 	for(int i=0;i < g->v ; i++)
 		if(v[i]==1)
 			printf(" %d",i);
 	
 }
+
+int graphList_GRAPHindeg(GraphList g,int vertice){
+	int grau=0;
+	for(int i=0; i < g->v ; i++) {
+		int b = searchList(g->adj[i],vertice);
+		if(b==true){
+			grau+=1;
+		}
+	}
+	
+	return grau;	
+}
+
+int graphList_GRAPHoutdeg(GraphList g,int vertice){
+	int grau=0;
+	
+	for(link aux=g->adj[vertice]; aux!=NULL ;aux=aux->next){
+		grau+=1;
+	}
+
+	return grau;
+}
+
+
 

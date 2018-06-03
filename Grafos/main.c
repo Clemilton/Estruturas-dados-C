@@ -20,9 +20,8 @@ int main (){
 
 
 	graphList_show(grafo);
-
-	graphList_imprimeFontes(grafo);
-	graphList_imprimeSorverdouros(grafo);
+	printf("\n\n");
+	graphList_GRAPHoutdeg(grafo,4);
 	
 	return 0;
 }

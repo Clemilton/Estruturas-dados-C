@@ -60,4 +60,10 @@ int *graphList_isSource(GraphList g);
 
 void graphList_imprimeFontes(GraphList g);
 
+/* Calcula o grau de entrada de um vertice v de um grafo g*/
+int graphList_GRAPHindeg(GraphList g,int vertice);
+
+/* Calcula o grau de saida de um vertice v de um grafo g*/
+int graphList_GRAPHoutdeg(GraphList,int vertice);
+
 #endif
