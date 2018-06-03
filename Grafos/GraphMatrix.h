@@ -31,7 +31,7 @@ void graphMatrix_removeArc( GraphMatrix G, vertex v, vertex w);
 void graphMatrix_show( GraphMatrix G);
 
 /*Retorna um vetor isSink, tal que  isSink[v] é true se e somente se v é um sorvedouro. */
-int *graphMatrix_soverdouros(GraphMatrix G);
+int *graphMatrix_sorverdouros(GraphMatrix G);
 
 void graphMatrix_imprimeSoverdouros(GraphMatrix G);
 

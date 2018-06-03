@@ -58,7 +58,7 @@ void graphMatrix_show( GraphMatrix G) {
 }
 
 /*Retorna um vetor isSink, tal que  isSink[v] é true se e somente se v é um sorvedouro. */
-int *graphMatrix_soverdouros(GraphMatrix G){
+int *graphMatrix_sorverdouros(GraphMatrix G){
 	int vertices = G->v;
 	int* isSink = malloc(sizeof(int)*vertices);
 	for(int i=0;i<vertices;i++){
@@ -77,9 +77,9 @@ int *graphMatrix_soverdouros(GraphMatrix G){
 	return isSink;
 }
 
-void graphMatrix_imprimeSoverdouros(GraphMatrix G){
+void graphMatrix_imprimeSorverdouros(GraphMatrix G){
 	
-	int * v = soverdouros(G);
+	int * v = graphMatrix_sorverdouros(G);
 	int i;
 	printf("\nVertices Soverdouros: ");
 	
@@ -113,7 +113,7 @@ int *graphMatrix_fontes(GraphMatrix G){
 
 void graphMatrix_imprimeFontes(GraphMatrix G){
 	
-	int * v = fontes(G);
+	int * v = graphMatrix_fontes(G);
 	int i;
 	printf("\nVertices Fontes: ");
 	

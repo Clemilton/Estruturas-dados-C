@@ -1,0 +1,41 @@
+Exercícios 1
+
+Resolva os exercícios abaixo para cada uma das estruturas de dados (matriz de adjacências e listas de adjacência) descritas acima.
+
+1. Escreva uma função que identifique os sorvedouros de um grafo. (Sugestão: calcule um vetor isSink[] tal que  isSink[v] é true se e somente se v é um sorvedouro.)  Depois, escreva uma função que identifique as fontes de um grafo. (Sugestão: calcule um vetor isSource[] tal que  isSource[v] é true se e somente se v é uma fonte.)
+
+2. [Sedgewick 17.40]  Escreva uma função GRAPHindeg() que calcule o grau de entrada de um vértice v de um grafo G.  Escreva uma função GRAPHoutdeg() que calcule o grau de saída de v.
+
+3. [Sedgewick 17.24, 17.29]  Escreva uma função GRAPHcopy() que receba um grafo, crie uma cópia do grafo, e devolva (o endereço d)a cópia.
+
+4. [Sedgewick 17.24, 17.29]  Escreva uma função GRAPHdestroy() que destrua a representação de um grafo G, liberando o espaço que a representação ocupa na memória.
+
+5. Verifica grafo.  Escreva uma função GRAPHcheck() que confira a consistência da representação de um grafo G.  (Em particular, verifique se a representação não tem laços nem arcos paralelos.)
+
+6. Teste de igualdade.  Escreva uma função GRAPHequal() que decida se dois grafos, digamos G1 e G2, são iguais.
+
+7. Transformação de uma representação em outra.  Escreva funções que convertam uma representação de um grafo em outra. Por exemplo, convertam uma representação por matriz de adjacências na representação por listas de adjacência.
+10. ☆ Grafo inverso.  Escreva uma função GRAPHreverse() que inverta um grafo G, ou seja, construa um grafo cujos arcos têm direção contrária aos de G.
+
+11. ☆ Mudança dos nomes dos vértices  Escreva uma função GRAPHrenameVertices que receba um grafo G e um permutação novonome[] dos vértices de G (o vetor novonome[] é indexado pelos vértices e tem valores em 0 1 2 ... V-1) e construa um grafo H isomorfo a G tal que o vértice v de G tenha como imagem o vértice novonome[v] de H.
+12. Verifica torneio.  Escreva uma função isTournament() que decida se um dado grafo é um torneio.
+
+Exercícios 2: listas de adjacência
+
+1. A representação de grafos por listas de adjacência merece alguns exercícios adicionais.
+
+2. [Sedgewick 17.27]  Escreva uma versão da função GRAPHshow() para grafos representados por listas de adjacência. Veja a função análoga para matriz de adjacências.
+Remoção de arco.  Escreva uma função GRAPHremoveArc() que receba dois vértices v e w de um grafo G representado por listas de adjacência e remova o arco v-w de G.
+Faça uma figura do grafo representado pelas listas de adjacência da figura acima.
+☆ [Sedgewick 17.26]  Considere o grafo definido pelos arcos abaixo.  Faça uma figura do vetor de listas de adjacência quando os arcos são inseridas por GRAPHinsertArc(), na ordem dada abaixo, em um grafo inicialmente vazio.
+3-7 1-4 7-8 0-5 5-2 3-8 2-9 0-6 4-9 2-6 6-4
+[Sedgewick 17.30]  Dê um exemplo simples de um vetor de listas de adjacência que não pode ser gerado, a partir do grafo vazio, pela aplicação da função GRAPHinsertArc().
+[Sedgewick Prog 19.1]  Escreva uma função que receba um grafo e inverta todas as suas listas de adjacência.  Por exemplo, se os 4 vizinhos de um certo vértice u aparecem na lista adj[u] na ordem  v, w, x, y, então depois da aplicação da função a lista deve conter os mesmos vértices na ordem y, x, w, v.
+Exercícios 3: grafos não-dirigidos
+
+Os exercícios desta seção envolvem grafos não-dirigidos.  Num grafo não-dirigido, cada par de arcos antiparalelos é uma aresta.  Resolva os exercícios abaixo para cada uma das estruturas de dados (matriz de adjacências e listas de adjacência) descritas acima.
+
+É grafo não-dirigido?  Escreva uma função GRAPHisUndirected() que decida se um dado grafo é não-dirigido.
+Inserção de aresta.  Escreva uma função UGRAPHinsertEdge() que insira uma aresta v-w em um grafo não-dirigido G.  [Solução]
+[Sedgewick 17.28] Remoção de aresta.  Escreva uma função UGRAPHremoveEdge() que remova de um grafo não-dirigido G uma dada aresta v-w.
+Graus.  Escreva uma função UGRAPHdegrees() que receba um grafo não-dirigido e devolve um vetor grau[], indexado por vértices, tal que grau[v] é o grau do vértice v.
