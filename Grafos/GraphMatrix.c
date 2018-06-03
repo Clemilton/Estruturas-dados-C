@@ -10,7 +10,7 @@ int **MATRIXint( int r, int c, int val) {
    return m;
 }
 
-GraphMatrix GRAPHinit(int v){
+GraphMatrix graphMatrix_init(int v){
 	GraphMatrix G = malloc(sizeof*G);
 	
 	G->v=v;
@@ -20,25 +20,27 @@ GraphMatrix GRAPHinit(int v){
 	
 	return G;
 }
-/* REPRESENTAÇÃO POR MATRIZ DE ADJACÊNCIAS: A função GRAPHinsertArc() insere um arco v-w no grafo G. A função supõe que v e w são distintos, positivos e menores que G->V. Se o grafo já tem um arco v-w, a função não faz nada. */
-
-void GRAPHinsertArc( GraphMatrix G, vertex v, vertex w) { 
+/* REPRESENTAÇÃO POR MATRIZ DE ADJACÊNCIAS: A função graphMatrix_insertArc() 
+ * insere um arco v-w no grafo G. A função supõe que v e w são distintos, 
+ * positivos e menores que G->V. Se o grafo já tem um arco v-w, a função não faz nada. */
+void graphMatrix_insertArc( GraphMatrix G, vertex v, vertex w) { 
    if (G->adj[v][w] == 0) {
       G->adj[v][w] = 1; 
       G->a++;
    }
 }
-/* REPRESENTAÇÃO POR MATRIZ DE ADJACÊNCIAS: A função GRAPHremoveArc() remove do grafo G o arco v-w. A função supõe que v e w são distintos, positivos e menores que G->V. Se não existe arco v-w, a função não faz nada. */
+/* REPRESENTAÇÃO POR MATRIZ DE ADJACÊNCIAS: A função graphMatrix_removeArc() 
+ * remove do grafo G o arco v-w. A função supõe que v e w são distintos, positivos e menores que G->V. Se não existe arco v-w, a função não faz nada. */
 
-void GRAPHremoveArc( GraphMatrix G, vertex v, vertex w) { 
+void graphMatrix_removeArc( GraphMatrix G, vertex v, vertex w) { 
    if (G->adj[v][w] == 1) {
       G->adj[v][w] = 0; 
       G->a--;
    }
 }
-/* REPRESENTAÇÃO POR MATRIZ DE ADJACÊNCIAS: A função GRAPHshow() imprime, para cada vértice v do grafo G, em uma linha, todos os vértices adjacentes a v. */
+/* REPRESENTAÇÃO POR MATRIZ DE ADJACÊNCIAS: A função graphMatrix_show() imprime, para cada vértice v do grafo G, em uma linha, todos os vértices adjacentes a v. */
 
-void GRAPHshow( GraphMatrix G) { 
+void graphMatrix_show( GraphMatrix G) { 
 	if(G==NULL){
 		printf("Grafo vazio!!");
 		return;
@@ -56,7 +58,7 @@ void GRAPHshow( GraphMatrix G) {
 }
 
 /*Retorna um vetor isSink, tal que  isSink[v] é true se e somente se v é um sorvedouro. */
-int *soverdouros(GraphMatrix G){
+int *graphMatrix_soverdouros(GraphMatrix G){
 	int vertices = G->v;
 	int* isSink = malloc(sizeof(int)*vertices);
 	for(int i=0;i<vertices;i++){
@@ -75,7 +77,7 @@ int *soverdouros(GraphMatrix G){
 	return isSink;
 }
 
-void imprimeSoverdouros(GraphMatrix G){
+void graphMatrix_imprimeSoverdouros(GraphMatrix G){
 	
 	int * v = soverdouros(G);
 	int i;
@@ -90,7 +92,7 @@ void imprimeSoverdouros(GraphMatrix G){
 
 }
 /*Retorna um vetor isSource, tal que  isSource[v] é true se e somente se v é uma fonte. */
-int *fontes(GraphMatrix G){
+int *graphMatrix_fontes(GraphMatrix G){
 	int vertices = G->v;
 	int* isSource = malloc(sizeof(int)*vertices);
 	for(int i=0;i<vertices;i++){
@@ -109,7 +111,7 @@ int *fontes(GraphMatrix G){
 	return isSource;
 }
 
-void imprimeFontes(GraphMatrix G){
+void graphMatrix_imprimeFontes(GraphMatrix G){
 	
 	int * v = fontes(G);
 	int i;
@@ -123,16 +125,16 @@ void imprimeFontes(GraphMatrix G){
 	}
 
 }
-void leArestas(GraphMatrix grafo,int qtd){
+void graphMatrix_leArestas(GraphMatrix grafo,int qtd){
 	int v,w;
 	
 	for(int i = 0 ;i<qtd;i++){
 		scanf("%d%d",&v,&w);
-		GRAPHinsertArc(grafo,v,w);
+		graphMatrix_insertArc(grafo,v,w);
 	}	
 }
 //Calcula o grau de entrada do vertice V(0 a V-1);
-int GRAPHindeg(GraphMatrix grafo, int vertice){
+int graphMatrix_indeg(GraphMatrix grafo, int vertice){
 	int num=0;
 	for(int j=0;j<grafo->v;j++){
 		num+=grafo->adj[j][vertice];
@@ -141,7 +143,7 @@ int GRAPHindeg(GraphMatrix grafo, int vertice){
 }
 
 //Calcula o grau de saida do vertice V(0 a V-1);
-int GRAPHoutdeg(GraphMatrix grafo, int vertice){
+int graphMatrix_outdeg(GraphMatrix grafo, int vertice){
 	int num=0;
 	for(int j=0;j<grafo->v;j++){
 		num+=grafo->adj[vertice][j];
@@ -149,8 +151,8 @@ int GRAPHoutdeg(GraphMatrix grafo, int vertice){
 	return num;
 }
 /*Cria uma copia do grafo. Retorna o endereco de memoria */
-GraphMatrix GRAPHcopy(GraphMatrix grafo){
-	GraphMatrix copia = GRAPHinit(grafo->v);
+GraphMatrix graphMatrix_copy(GraphMatrix grafo){
+	GraphMatrix copia = graphMatrix_init(grafo->v);
 	
 	for(int v=0 ; v < copia->v ; v++){
 		for( int w = 0 ; w < copia->v; w++){
@@ -164,7 +166,7 @@ GraphMatrix GRAPHcopy(GraphMatrix grafo){
 	
 }
 
-void GRAPHdestroy(GraphMatrix *grafo){	
+void graphMatrix_destroy(GraphMatrix *grafo){	
 	for(int x = 0 ; x< (*grafo)->v; x++)
 		free((*grafo)->adj[x]);
 	free((*grafo)->adj);
@@ -172,7 +174,7 @@ void GRAPHdestroy(GraphMatrix *grafo){
 	
 }
 //Verifica se um grafo é consistente
-bool GRAPHcheck(GraphMatrix grafo){
+bool graphMatrix_check(GraphMatrix grafo){
 	for(int i=0 ; i < grafo->v ; i++){
 		if(grafo->adj[i][i]==1)
 			return false;
@@ -181,7 +183,7 @@ bool GRAPHcheck(GraphMatrix grafo){
 	return true;
 }
 
-bool GRAPHequal(GraphMatrix g1,GraphMatrix g2){
+bool graphMatrix_equal(GraphMatrix g1,GraphMatrix g2){
 	
 	if(( g1->a != g2->a) || ( g1->v != g2->v ))
 		return false;

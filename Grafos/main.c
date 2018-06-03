@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "GraphList.h"
 #include "GraphMatrix.h"
 
 int main (){
@@ -7,12 +8,9 @@ int main (){
 	printf("Digite o numero de vertices: ");
 	scanf("%d",&vertices);
 	
-	GraphMatrix grafo = GRAPHinit(vertices);
+	GraphList grafo = graphList_init(vertices);
 	
-	leArestas(grafo,7);
-	GraphMatrix copia = GRAPHcopy(grafo);
-	
-	printf("%d",GRAPHequal(grafo,copia));
+	graphList_insertArc(grafo,1,0);
 	
 	return 0;
 }
