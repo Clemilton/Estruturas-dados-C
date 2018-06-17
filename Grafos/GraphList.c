@@ -7,7 +7,7 @@ link NEWnode( vertex w, link next) {
    return a;                         
 }
 
-bool searchList(link l, vertex num){
+int searchList(link l, vertex num){
 	link aux=l;
 	
 	while(aux!=NULL){
